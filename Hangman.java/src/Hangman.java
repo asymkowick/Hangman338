@@ -9,6 +9,8 @@
 
 
 /**
+* Files were created on a Mac, these are the paths to my test files.
+* Experience should not differ on Windows.
 * /Users/asymkowick/t1.txt
 * /Users/asymkowick/t2.txt
 */
