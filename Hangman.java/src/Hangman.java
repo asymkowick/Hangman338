@@ -7,6 +7,12 @@
 * Date: 2/6/15
 */
 
+
+/**
+* /Users/asymkowick/t1.txt
+* /Users/asymkowick/t2.txt
+*/
+
 import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,29 +22,34 @@ import java.io.FileReader;
 
 public class Hangman {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws Exception {
 		Scanner keyboard = new Scanner(System.in);
 		String filename, key;
 		boolean won = false;
 		
 		System.out.print("Enter a file name: ");
 		filename = keyboard.nextLine();  
-//code built on mac filesystem, expected filename is /Users/asymkowick/t1.txt
-//												  or /Users/asymkowick/t2.txt
-		
+		System.out.println();
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
-		key = reader.readLine();
 		
-		StringBuilder hiddenkey = new StringBuilder(key.length());
+		key = reader.readLine(); // key is the ORIGINAL string value of EASY or DIFFICULT
+		key = key.replace("",  " ").trim(); // key now stores E A S Y or D I F F I C U L T
+		
+		
+		StringBuilder hiddenkey = new StringBuilder(key.length()); //StringBuilder creates a string of equal length to be filled in later
+		
+		
+		
 		char[] keyArray = key.toCharArray(); //use a char array to compare letters later on
+		//System.out.println(keyArray); //delete this
+		//System.out.println(key);
 		
-		//delete this
-		System.out.println(keyArray);
 		
-		while(hiddenkey.length() < key.length()) // * 2 allow for spaces between dashes by doubling the loop
+		
+		
+		while(hiddenkey.length() < key.length()) //allow for spaces between dashes by doubling the loop
 		{
-			hiddenkey.append("_"); //add a space
+			hiddenkey.append("_ "); // build dashed "hidden" word WITH spaces
 		}
 		
 		int lives = 4; //sample code starts with 4 lives
@@ -48,7 +59,7 @@ public class Hangman {
 		ArrayList alreadyGuessedIncorrect = new ArrayList();
 		
 		
-		
+		//System.out.println(hiddenkey.length() + " and " + key.length());
 		
 		
 		
@@ -76,7 +87,7 @@ public class Hangman {
 								System.out.println("That's right! " + guess + " is in the word.");
 								alreadyGuessedCorrect.add(guess);
 								
-									for(int i = 0; i < hiddenkey.length(); i++)
+									for(int i = 0; i < key.length(); i++)
 									{
 										
 										if(guess == keyArray[i]) //if the guess is in spot i of the word
