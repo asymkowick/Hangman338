@@ -1,11 +1,11 @@
 
-
-
-
-
-
-
-
+/**
+* Title: Hangman.java
+* Abstract: This program plays a game of Hangman.
+* Author: Anthony Symkowick
+* ID: 3895
+* Date: 2/6/15
+*/
 
 import java.util.*;
 import java.io.FileNotFoundException;
